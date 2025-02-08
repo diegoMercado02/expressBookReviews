@@ -99,7 +99,7 @@ async function fetchBooks() {
     const response = await axios.get('http://localhost:5000/');
     return response.data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.response.data.message);
   }
 }
 
@@ -109,7 +109,7 @@ async function fetchBookByISBN(isbn) {
     const response = await axios.get(`http://localhost:5000/isbn/${isbn}`);
     return response.data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.response.data.message);
   }
 }
 
@@ -119,7 +119,7 @@ async function fetchBookByAuthor(author) {
     const response = await axios.get(`http://localhost:5000/author/${author}`);
     return response.data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.response.data.message);
   }
 }
 
@@ -129,8 +129,8 @@ async function fetchBookByTitle(title) {
     const response = await axios.get(`http://localhost:5000/title/${title}`);
     return response.data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error.response.data.message);
   }
 }
-
+fetchBookByTitle('12312313')
 module.exports.general = public_users;
