@@ -18,9 +18,9 @@ app.use("/customer/auth/*", function auth(req, res, next) {
 	}
 
     const token = auth.split(' ')[1];
-    
+
 	try {
-		const decoded = jwt.verify(token, session.secret);
+		const decoded = jwt.verify(token, "fingerprint_customer");
 		req.user = decoded;
 	} catch (err) {
 		return res.status(401).send('Invalid Token');
