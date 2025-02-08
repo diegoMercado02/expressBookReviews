@@ -103,5 +103,15 @@ async function fetchBooks() {
   }
 }
 
+// Task 11
+async function fetchBookByISBN(isbn) {
+  try {
+    const response = await axios.get(`http://localhost:5000/isbn/${isbn}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 module.exports.general = public_users;
