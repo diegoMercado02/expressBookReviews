@@ -123,5 +123,14 @@ async function fetchBookByAuthor(author) {
   }
 }
 
+// Task 13 
+async function fetchBookByTitle(title) {
+  try {
+    const response = await axios.get(`http://localhost:5000/title/${title}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 module.exports.general = public_users;
