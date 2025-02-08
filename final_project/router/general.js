@@ -2,7 +2,9 @@ const express = require('express');
 let books = require("./booksdb.js");
 let isValid = require("./auth_users.js").isValid;
 let users = require("./auth_users.js").users;
+const axios = require('axios');
 const public_users = express.Router();
+
 
 
 public_users.post("/register", (req,res) => {
@@ -90,5 +92,16 @@ public_users.get('/review/:isbn',function (req, res) {
   }
 
 });
+
+// Task 10 
+async function fetchBooks() {
+  try {
+    const response = await axios.get('http://localhost:5000/');
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 
 module.exports.general = public_users;
